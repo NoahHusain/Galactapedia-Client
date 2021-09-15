@@ -1,0 +1,27 @@
+.navbar1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: goldenrod 1px solid;
+}
+
+.alignRight {
+    text-align: right;
+    margin-right: 1.6rem;
+    
+}
+
+.navbar__item {
+    flex-basis: 7%;
+    list-style-type: none;
+}
+
+.logo {
+    height: 5rem
+}

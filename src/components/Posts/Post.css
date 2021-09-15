@@ -1,0 +1,45 @@
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+  
+.post {
+    flex-basis: 28%;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #31b880;
+    background-color: rgb(0, 42, 39, 0.9 );
+}
+
+.blueText {
+    color: #eeff00;
+}
+
+.goldenRodText {
+    color: #ffffff;
+}
+
+.center {
+    text-align: center;
+}
+
+.create__button {
+    display: block;
+    text-align: center;
+    margin: 1rem auto 0.5rem auto;
+    padding: 0.3rem 0.3rem;
+    font-size: larger;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.centerLabel{
+    justify-content: center;
+}

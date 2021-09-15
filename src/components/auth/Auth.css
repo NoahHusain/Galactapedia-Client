@@ -1,0 +1,131 @@
+.h1, h1 {
+    font-size: 2.5rem;
+}
+
+fieldset {
+    margin-inline-end: 0;
+    border: 0;
+}
+
+.form--login--wrap {
+    display: flex;
+    margin: auto;
+    max-width: 900px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form--login {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form--login > fieldset > input[type="email"],
+.form--login > fieldset > input[type="password"] {
+    margin: auto;
+    max-width: 300px;
+}
+
+.label--login {
+    width: 8rem;
+    display: inline-block;
+}
+
+.form-control {
+    display: block;
+    width: 94%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control-firstName, .form-control-lastName, .form-control-username, .form-control-profileImage {
+    display: block;
+    width: 400px;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin: auto;
+    max-width: 300px;
+}
+
+.form-control-bio {
+    display: block;
+    width: 94%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin: auto;
+    max-width: 300px;
+    resize: vertical;
+}
+.container--login {
+    text-align: center;
+}
+
+.form--login {
+    z-index: 1;
+    min-height: 25rem;
+    background-color: hsla(0,0%,100%,0.75);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+}
+
+.button--close {
+    position: relative;
+    bottom: -2rem;
+}
+
+.dialog {
+    min-width: 15rem;
+    min-height: 5rem;
+}
+
+.link--register {
+    font-size: 15px;
+}
+
+.signInHead {
+    text-align: center;
+}
+.rareLogoImage {
+    margin-top: 5rem;    
+    margin-bottom: 7rem;
+    text-align: center;
+}
+
+.profileImageDefault {
+    width: 94%;
+    text-align: center;
+}
+.profileImageDiv {
+    display: flex;
+    justify-content: center;
+}
