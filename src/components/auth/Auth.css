@@ -92,8 +92,6 @@ fieldset {
 
 .form--login {
     z-index: 1;
-    min-height: 25rem;
-    background-color: hsla(0,0%,100%,0.75);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
 }
@@ -128,4 +126,12 @@ fieldset {
 .profileImageDiv {
     display: flex;
     justify-content: center;
+}
+
+.galactapediaLogin {
+    color: #fff;
+    font-size: 48px;
+    margin-top: 18rem;
+    margin-bottom: 2rem;
+
 }

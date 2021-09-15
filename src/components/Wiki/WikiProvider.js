@@ -1,10 +1,10 @@
 import React, { useState, createContext } from "react";
 
 // The context is imported and used by individual components that need data
-export const PostContext = createContext();
+export const WikiContext = createContext();
 
 // This component establishes what data can be used.
-export const PostProvider = (props) => {
+export const WikiProvider = (props) => {
   const [stellarObjects, setStellarObjects] = useState([]);
 
   const api = "http://localhost:8000"
@@ -18,25 +18,35 @@ export const PostProvider = (props) => {
       .then(setStellarObjects);
   };
 
+  const getStellarObjectById = (getStellarObjectId) => {
+    return fetch(`${api}/stellarobjects/${getStellarObjectId}`, {
+    headers: {
+        "Authorization": `Token ${localStorage.getItem("Galactapedia_user_token")}`
+    }})
+      .then((res) => res.json())
+  };
+
   const addStellarObject = (stellarObject) => {
     return fetch(`${api}/stellarobjects`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Token ${localStorage.getItem("Galactapedia_user_token")}`
       },
       body: JSON.stringify(stellarObject),
     }).then(getStellarObjects);
   };
 
   return (
-    <PostContext.Provider
+    <WikiContext.Provider
       value={{
         stellarObjects,
         getStellarObjects,
-        addStellarObject
+        addStellarObject,
+        getStellarObjectById
       }}
     >
       {props.children}
-    </PostContext.Provider>
+    </WikiContext.Provider>
   );
 };
