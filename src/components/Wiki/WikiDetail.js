@@ -31,7 +31,7 @@ export const WikiDetail = () => {
       {stellarObject.star_type?.type ? <div className="blueText">Spectral Class: {stellarObject.star_type.type}</div> : null}
       {stellarObject.luminosity ? <div className="blueText">Luminosity (Compared to The Earths Sun): {stellarObject.luminosity}</div> : null}
       <div className="blueText">Mass: {stellarObject.stellar_object?.mass}</div>
-      <div className="blueText">Radius: {stellarObject.stellar_object?.radius} </div>
+      <div className="blueText">Radius: {stellarObject.stellar_object?.radius} Miles</div>
       <div className="blueText">
         Discovered On: {stellarObject.stellar_object?.discovered_on}{" "}
       </div>
