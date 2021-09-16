@@ -14,7 +14,7 @@ export const ApplicationViews = () => {
           <WikiList />
         </Route>
 
-        <Route exact path="/wiki/:stellarObject(\d+)">
+        <Route exact path="/wiki/:stellarObjectId(\d+)">
           <WikiDetail />
         </Route>
 
