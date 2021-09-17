@@ -27,7 +27,7 @@ export const ApplicationViews = () => {
           <WikiForm />
         </Route>
 
-        <Route exact path="/posts/edit/:postId(\d+)">
+        <Route exact path="/wiki/edit/:stellarObjectId(\d+)">
           <EditWiki />
         </Route>
         </PlanetProvider>

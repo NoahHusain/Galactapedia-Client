@@ -23,6 +23,23 @@ export const WikiDetail = () => {
     deleteStellarObject(stellarObjectId);
   };
 
+  const handleUpdatePost = (stellarObjectId) => {
+    history.push(`/wiki/edit/${stellarObjectId}`);
+  };
+
+  const editPostButton = () => {
+      return <button
+      className="post blueText"
+      id={`post--${stellarObjectId}`}
+      onClick={(event) => {
+        event.preventDefault();
+        handleUpdatePost(stellarObjectId);
+      }}
+    >
+      Edit Post
+    </button>
+  }
+
   const DeletePostButton = () => {
     const [is_staff, set_is_staff] = useState(false);
 
@@ -99,6 +116,7 @@ export const WikiDetail = () => {
         Discovered By: {stellarObject.stellar_object?.discovered_by}{" "}
       </div>
       <DeletePostButton />
+      {editPostButton()}
     </section>
   );
 };
