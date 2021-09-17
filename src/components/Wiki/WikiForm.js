@@ -109,6 +109,7 @@ export const WikiForm = () => {
           <option value="Star">Star</option>
           <option value="Planet">Planet</option>
           <option value="Moon">Moon</option>
+          <option value="Asteroid">Asteroid</option>
         </select>
 
         <fieldset>
@@ -344,6 +345,7 @@ export const WikiForm = () => {
             </fieldset>
           </>
         ) : null}
+
 
         <button
           className="center post blueText"
