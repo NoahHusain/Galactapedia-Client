@@ -297,15 +297,23 @@ export const WikiForm = () => {
           <>
             <fieldset>
               <div className="center posts  blueText">
-                <label htmlFor="name">Parent Planet:</label>
-                <input
-                  value={stellarObject.moon?.planet}
-                  type="parent_planet"
-                  id="parent_planet"
+                <label className="centerLabel" htmlFor="parent_planet">
+                  Parent Planet:
+                </label>
+                <select
+                  value={stellarObject.planet?.star}
                   name="parent_planet"
+                  id="parent_planet"
                   className="center  post blueText"
                   onChange={handleControlledInputChange}
-                />
+                >
+                  <option value="0">Select Parent Planet</option>
+                  {planets.map((planet) => (
+                    <option key={planet.id} value={planet.id}>
+                      {planet.stellar_object.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </fieldset>
             <fieldset>
