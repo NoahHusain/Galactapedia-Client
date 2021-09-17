@@ -2,9 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Wiki.css";
 import { useHistory, useParams } from "react-router-dom";
 import { WikiContext } from "./WikiProvider";
+import { StarContext } from "../Stars/StarProvider";
+import { PlanetContext } from "../Planets/PlanetProvider";
 
 export const WikiForm = () => {
   const { addStellarObject } = useContext(WikiContext);
+  const { star_types, getStarTypes } = useContext(StarContext);
+  const { stars, getStars } = useContext(StarContext);
+  const { planets, getPlanets } = useContext(PlanetContext);
+
   const [stellarObject, setStellarObject] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
@@ -32,6 +38,18 @@ export const WikiForm = () => {
   };
 
   useEffect(() => {
+    getPlanets();
+  }, []);
+
+  useEffect(() => {
+    getStars();
+  }, []);
+
+  useEffect(() => {
+    getStarTypes();
+  }, []);
+
+  useEffect(() => {
     if (isLoading === false) {
       return;
     } else {
@@ -50,6 +68,14 @@ export const WikiForm = () => {
         radius: parseInt(stellarObject.radius),
         discovered_on: stellarObject.discovered_on,
         discovered_by: stellarObject.discovered_by,
+        is_dwarf: stellarObject.is_dwarf,
+        parent_star: stellarObject.parent_star,
+        gravity: stellarObject.gravity,
+        orbital_period: stellarObject.orbital_period,
+        luminosity: stellarObject.luminosity,
+        parent_planet: stellarObject.parent_planet,
+        star_type: stellarObject.star_type,
+        type: category,
       }).then(() => history.push("/"));
     } else {
       window.alert("Please fill in all form fields before submitting.");
@@ -207,22 +233,28 @@ export const WikiForm = () => {
           <>
             <fieldset>
               <div className="center posts  blueText">
-                <label htmlFor="name">Parent Star:</label>
-                <input
+                <label className="centerLabel" htmlFor="parent_star">
+                  Parent Star:
+                </label>
+                <select
                   value={stellarObject.planet?.star}
-                  type="parent_star"
-                  id="parent_star"
                   name="parent_star"
+                  id="parent_star"
                   className="center  post blueText"
                   onChange={handleControlledInputChange}
-                />
+                >
+                  <option value="0">Select Parent Star</option>
+                  {stars.map((star) => (
+                    <option key={star.id} value={star.id}>
+                      {star.stellar_object.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </fieldset>
             <fieldset>
               <div className="center posts  blueText">
-                <label htmlFor="name">
-                  Gravity(M/s):
-                </label>
+                <label htmlFor="name">Gravity(M/s):</label>
                 <input
                   value={stellarObject.planet?.gravity}
                   type="gravity"
@@ -235,9 +267,7 @@ export const WikiForm = () => {
             </fieldset>
             <fieldset>
               <div className="center posts  blueText">
-                <label htmlFor="name">
-                  Orbital Period:
-                </label>
+                <label htmlFor="name">Orbital Period:</label>
                 <input
                   value={stellarObject.planet?.orbital_period}
                   type="orbital_period"
@@ -250,12 +280,9 @@ export const WikiForm = () => {
             </fieldset>
             <fieldset>
               <div className="center posts  blueText">
-                <label htmlFor="name">
-                  Dwarf?(True or False):
-                </label>
+                <label htmlFor="name">Is Dwarf Planet? (True/ False):</label>
                 <input
                   value={stellarObject.planet?.is_dwarf}
-                  type="is_dwarf"
                   id="is_dwarf"
                   name="is_dwarf"
                   className="center  post blueText"
@@ -268,50 +295,46 @@ export const WikiForm = () => {
 
         {category === "Moon" ? (
           <>
-          <fieldset>
-            <div className="center posts  blueText">
-              <label htmlFor="name">Parent Planet:</label>
-              <input
-                value={stellarObject.moon?.planet}
-                type="parent_planet"
-                id="parent_planet"
-                name="parent_planet"
-                className="center  post blueText"
-                onChange={handleControlledInputChange}
-              />
-            </div>
-          </fieldset>
-          <fieldset>
-            <div className="center posts  blueText">
-              <label htmlFor="name">
-                Gravity(M/s):
-              </label>
-              <input
-                value={stellarObject.planet?.gravity}
-                type="gravity"
-                id="gravity"
-                name="gravity"
-                className="center  post blueText"
-                onChange={handleControlledInputChange}
-              />
-            </div>
-          </fieldset>
-          <fieldset>
-            <div className="center posts  blueText">
-              <label htmlFor="name">
-                Orbital Period:
-              </label>
-              <input
-                value={stellarObject.planet?.orbital_period}
-                type="orbital_period"
-                id="orbital_period"
-                name="orbital_period"
-                className="center  post blueText"
-                onChange={handleControlledInputChange}
-              />
-            </div>
-          </fieldset>
-        </>
+            <fieldset>
+              <div className="center posts  blueText">
+                <label htmlFor="name">Parent Planet:</label>
+                <input
+                  value={stellarObject.moon?.planet}
+                  type="parent_planet"
+                  id="parent_planet"
+                  name="parent_planet"
+                  className="center  post blueText"
+                  onChange={handleControlledInputChange}
+                />
+              </div>
+            </fieldset>
+            <fieldset>
+              <div className="center posts  blueText">
+                <label htmlFor="name">Gravity(M/s):</label>
+                <input
+                  value={stellarObject.planet?.gravity}
+                  type="gravity"
+                  id="gravity"
+                  name="gravity"
+                  className="center  post blueText"
+                  onChange={handleControlledInputChange}
+                />
+              </div>
+            </fieldset>
+            <fieldset>
+              <div className="center posts  blueText">
+                <label htmlFor="name">Orbital Period:</label>
+                <input
+                  value={stellarObject.planet?.orbital_period}
+                  type="orbital_period"
+                  id="orbital_period"
+                  name="orbital_period"
+                  className="center  post blueText"
+                  onChange={handleControlledInputChange}
+                />
+              </div>
+            </fieldset>
+          </>
         ) : null}
 
         <button
