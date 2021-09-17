@@ -37,13 +37,37 @@ export const WikiProvider = (props) => {
     }).then(getStellarObjects);
   };
 
+  const deleteStellarObject = (stellarObjectId) => {
+    return fetch(
+      `${api}/stellarobjects/${stellarObjectId}`,{ 
+        method: "DELETE",
+        headers: {
+          "Authorization": `Token ${localStorage.getItem("Galactapedia_user_token")}`
+        }
+      }
+    ).then(getStellarObjects);
+  };
+
+  const checkIfStaff = () => {
+    return fetch(
+      `${api}/users`,{ 
+        method: "GET",
+        headers: {
+          "Authorization": `Token ${localStorage.getItem("Galactapedia_user_token")}`
+        }
+      }
+    ).then((res) => res.json())
+  };
+
   return (
     <WikiContext.Provider
       value={{
         stellarObjects,
         getStellarObjects,
         addStellarObject,
-        getStellarObjectById
+        getStellarObjectById,
+        deleteStellarObject,
+        checkIfStaff
       }}
     >
       {props.children}
