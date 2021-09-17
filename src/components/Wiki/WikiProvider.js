@@ -59,6 +59,20 @@ export const WikiProvider = (props) => {
     ).then((res) => res.json())
   };
 
+  const updateStellarObject = (stellarObject) => {
+    return fetch(
+      `${api}/stellarobjects/${stellarObject.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Token ${localStorage.getItem("Galactapedia_user_token")}`
+        },
+        body: JSON.stringify(stellarObject),
+      }
+    ).then(getStellarObjects);
+  };
+
   return (
     <WikiContext.Provider
       value={{
@@ -67,7 +81,8 @@ export const WikiProvider = (props) => {
         addStellarObject,
         getStellarObjectById,
         deleteStellarObject,
-        checkIfStaff
+        checkIfStaff,
+        updateStellarObject
       }}
     >
       {props.children}

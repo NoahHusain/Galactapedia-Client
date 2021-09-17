@@ -355,29 +355,9 @@ export const WikiForm = () => {
             event.preventDefault();
           }}
         >
-          Save Post
+          Save Wiki
         </button>
       </form>
     </>
   );
 };
-
-// export const renderStarFields = () => {
-//   return (
-//   <>
-//       <fieldset>
-//         <div className="center posts  blueText">
-//           <label htmlFor="name">Spectral Type:</label>
-//           <input value={stellarObject.star.star_type} type="star_type" id="star_type" name="star_type" className="center  post blueText" onChange={handleControlledInputChange}/>
-//         </div>
-//       </fieldset>
-
-//       <fieldset>
-//         <div className="center posts  blueText">
-//           <label htmlFor="name">Luminosity (Relative to the Earths Sun):</label>
-//           <input value={stellarObject.star.luminosity} type="luminosity" id="luminosity" name="luminosity" className="center  post blueText" onChange={handleControlledInputChange}/>
-//         </div>
-//       </fieldset>
-//   </>
-//   )
-// }

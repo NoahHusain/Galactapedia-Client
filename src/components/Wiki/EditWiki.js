@@ -1,178 +1,187 @@
-// import React, { useContext, useEffect, useState } from "react";
-// import "./Wiki.css";
-// import { useHistory, useParams } from "react-router-dom";
-// import { WikiContext } from "./WikiProvider";
-// import { OreContext } from "../Ores/OreProvider";
-// import { MoonContext } from "../Moons/MoonProvider";
-// import { PlanetContext } from "../Planets/PlanetProvider";
+import React, { useContext, useEffect, useState } from "react";
+import "./Wiki.css";
+import { useHistory, useParams } from "react-router-dom";
+import { WikiContext } from "./WikiProvider";
+import { StarContext } from "../Stars/StarProvider";
+import { PlanetContext } from "../Planets/PlanetProvider";
 
-// export const PostEdit = () => {
-//   const { updatePost, getPostById } = useContext(WikiContext);
-//   const { ores, getOres } = useContext(OreContext);
-//   const { moons, getMoons } = useContext(MoonContext);
-//   const { planets, getPlanets } = useContext(PlanetContext);
+export const EditWiki = () => {
+  const { updateStellarObject, getStellarObjectById } = useContext(WikiContext);
 
-//   // const [posts, setPosts] = useState({});
-//   const [post, setPost] = useState({});
-//   const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
 
-//   const { postId } = useParams();
-//   const history = useHistory();
+  const [wiki, setWiki] = useState({});
 
-//   const handleControlledInputChange = (event) => {
-//     const newPost = { ...post };
-//     newPost[event.target.name] = event.target.value;
-//     setPost(newPost);
-//   };
 
-//   useEffect(() => {
-//     getOres();
-//   }, []);
+  const { stellarObjectId } = useParams();
 
-//   useEffect(() => {
-//     getPlanets();
-//   }, []);
 
-//   useEffect(() => {
-//     getMoons();
-//   }, []);
+  const checkForm = () => {
+    if (
+      (wiki.name === undefined ||
+        wiki.description === undefined ||
+        wiki.mass === undefined ||
+        wiki.radius === undefined ||
+        wiki.discovered_on === undefined ||
+        wiki.discovered_by === undefined)
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
-//   useEffect(() => {
-//     getPostById(postId).then(post => {
-//       setPost(post)
-//     })
-//   }, [postId]);
+  useEffect(() => {
+    getStellarObjectById(stellarObjectId).then(wiki => {
+        const response_object = {
+        id: wiki.id,
+        name: wiki.stellar_object.name,
+        description: wiki.stellar_object.description,
+        mass: wiki.stellar_object.mass,
+        radius: wiki.stellar_object.radius,
+        discovered_on: wiki.stellar_object.discovered_on,
+        discovered_by: wiki.stellar_object.discovered_by,
+        }
+        setWiki(response_object)
+    });
+  }, []);
 
-//   const handleSavePost = (postId) => {
-//     const userId = localStorage.getItem("mines_customer");
-//     updatePost({
-//           id: postId,
-//           userId: parseInt(userId),
-//           oreId: parseInt(post.oreId),
-//           planetId: parseInt(post.planetId),
-//           moonId: parseInt(post.moonId),
-//           landingPoint: post.landingPoint,
-//           description: post.description,
-//           rockData: post.rockData,
-//           timestamp: post.timestamp,
-//       })
-//       .then(() => history.push("/posts"))
-//     }
 
-//   return (
-//     <>
-//       <h1 className="goldenRodText center">Edit Post</h1>
+  useEffect(() => {
+    if (isLoading === false) {
+      return;
+    } else {
+      handleSavePost();
+    }
+  }, [isLoading]);
 
-//       <form className="flex">
-//         <fieldset>
-//           <div className="center posts blueText">
-//             <label htmlFor="ore">Ore:</label>
-//             <select
-//               value={post.oreId}
-//               name="oreId"
-//               id="oreId"
-//               className="center post blueText"
-//               onChange={handleControlledInputChange}
-//             >
-//               <option value="0">Select an Ore</option>
-//               {ores.map((ore) => (
-//                 <option key={ore.id} value={ore.id}>
-//                   {ore.name}
-//                 </option>
-//               ))}
-//             </select>
-//           </div>
-//         </fieldset>
-//         <fieldset>
-//           <div className="center posts blueText">
-//             <label htmlFor="planet">Planet:</label>
-//             <select
-//               value={post.planetId}
-//               name="planetId"
-//               id="planetId"
-//               className="center post blueText"
-//               onChange={handleControlledInputChange}
-//             >
-//               <option value="0">Select Planet</option>
-//               {planets.map((planet) => (
-//                 <option key={planet.id} value={planet.id}>
-//                   {planet.name}
-//                 </option>
-//               ))}
-//             </select>
-//           </div>
-//         </fieldset>
-//         <fieldset>
-//           <div className="center posts blueText">
-//             <label htmlFor="moon">Moon:</label>
-//             <select
-//               value={post.moonId}
-//               name="moonId"
-//               id="moonId"
-//               className="center post blueText"
-//               onChange={handleControlledInputChange}
-//             >
-//               <option value="0">Select Moon (if applicable)</option>
-//               {moons.map((moon) => (
-//                 <option key={moon.id} value={moon.id}>
-//                   {moon.name}
-//                 </option>
-//               ))}
-//             </select>
-//           </div>
-//         </fieldset>
-//         <fieldset>
-//           <div className="center posts blueText">
-//             <label htmlFor="landingPoint">Landing Point:</label>
-//             <input
-//               value={post.landingPoint}
-//               type="landingPoint"
-//               id="landingPoint"
-//               name="landingPoint"
-//               className="center post blueText"
-//               onChange={handleControlledInputChange}
-//             />
-//           </div>
-//         </fieldset>
-//         <fieldset>
-//           <div className="center posts blueText">
-//             <label htmlFor="description">Description:</label>
-//             <input
-//               value={post.description}
-//               type="description"
-//               id="description"
-//               name="description"
-//               className="center post blueText"
-//               defaultValue={post.description}
-//               onChange={handleControlledInputChange}
-//             />
-//           </div>
-//         </fieldset>
-//         <fieldset>
-//           <div className="center posts blueText">
-//             <label htmlFor="rockData">Rock Data:</label>
-//             <input
-//               value={post.rockData}
-//               type="rockData"
-//               id="rockData"
-//               name="rockData"
-//               className="center post blueText"
-//               defaultValue={post.rockData}
-//               onChange={handleControlledInputChange}
-//             />
-//           </div>
-//         </fieldset>
+  const handleSavePost = () => {
+    const userId = localStorage.getItem("Galactapedia_user_token");
+    if (checkForm() === true) {
+        updateStellarObject({
+        id: stellarObjectId,
+        userId: userId,
+        name: wiki.name,
+        description: wiki.description,
+        mass: wiki.mass,
+        radius: parseInt(wiki.radius),
+        discovered_on: wiki.discovered_on,
+        discovered_by: wiki.discovered_by
+      }).then(() => history.push(`/wiki/${stellarObjectId}`));
+    } else {
+      window.alert("Please fill in all form fields before submitting.");
+      setIsLoading(false);
+    }
+  };
 
-//         <button
-//           className="center post blueText"
-//           onClick={(event) => {
-//             event.preventDefault();
-//             handleSavePost(postId);
-//           }}
-//         >
-//           Edit Post
-//         </button>
-//       </form>
-//     </>
-//   );
-// };
+  const handleControlledInputChange = (event) => {
+    const newWiki = { ...wiki };
+    newWiki[event.target.name] = event.target.value;
+    setWiki(newWiki);
+  };
+
+  return (
+    <>
+      <h1 className="goldenRodText center">Edit Wiki</h1>
+
+      <form className="flex post">
+
+        <fieldset>
+          <div className="center posts  blueText">
+            <label htmlFor="name">Name:</label>
+            <input
+              value={wiki.name}
+              type="name"
+              id="name"
+              name="name"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <div className="center posts  blueText">
+            <label htmlFor="description">Description:</label>
+            <textarea
+              value={wiki.description}
+              type="description"
+              id="description"
+              name="description"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <div className="center posts  blueText">
+            <label htmlFor="mass">Mass:</label>
+            <input
+              value={wiki.mass}
+              type="mass"
+              id="mass"
+              name="mass"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <div className="center posts  blueText">
+            <label htmlFor="radius">Radius(Whole Number in Miles):</label>
+            <input
+              value={wiki.radius}
+              type="radius"
+              id="radius"
+              name="radius"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <div className="center posts  blueText">
+            <label htmlFor="discovered_by">Discovered By:</label>
+            <input
+              value={wiki.discovered_by}
+              type="discovered_by"
+              id="discovered_by"
+              name="discovered_by"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <div className="center posts  blueText">
+            <label htmlFor="discovered_on">Discovered On (yyyy-mm-dd):</label>
+            <input
+              value={wiki.discovered_on}
+              type="discovered_on"
+              id="discovered_on"
+              name="discovered_on"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
+
+        <button
+          className="center post blueText"
+          disabled={isLoading}
+          onClick={(event) => {
+            setIsLoading(true);
+            event.preventDefault();
+          }}
+        >
+          Update Wiki
+        </button>
+      </form>
+    </>
+  );
+};
