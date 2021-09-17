@@ -42,6 +42,7 @@ export const Login = () => {
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
             <section>
+                <div className="galactapediaLogin">Galactapedia</div>
                 <form className="form--login" onSubmit={handleLogin}>
                     
                     <fieldset>

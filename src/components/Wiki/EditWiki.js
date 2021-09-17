@@ -1,13 +1,13 @@
 // import React, { useContext, useEffect, useState } from "react";
-// import "./Post.css";
+// import "./Wiki.css";
 // import { useHistory, useParams } from "react-router-dom";
-// import { PostContext } from "./PostProvider";
+// import { WikiContext } from "./WikiProvider";
 // import { OreContext } from "../Ores/OreProvider";
 // import { MoonContext } from "../Moons/MoonProvider";
 // import { PlanetContext } from "../Planets/PlanetProvider";
 
 // export const PostEdit = () => {
-//   const { updatePost, getPostById } = useContext(PostContext);
+//   const { updatePost, getPostById } = useContext(WikiContext);
 //   const { ores, getOres } = useContext(OreContext);
 //   const { moons, getMoons } = useContext(MoonContext);
 //   const { planets, getPlanets } = useContext(PlanetContext);
@@ -36,7 +36,7 @@
 //   useEffect(() => {
 //     getMoons();
 //   }, []);
-  
+
 //   useEffect(() => {
 //     getPostById(postId).then(post => {
 //       setPost(post)

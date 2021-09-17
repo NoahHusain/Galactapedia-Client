@@ -1,27 +1,31 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { PostProvider } from "./Posts/PostProvider";
-import { PostList } from "./Posts/PostList";
-import { PostEdit } from "./Posts/PostEdit";
-import { PostForm } from "./Posts/PostForm";
-
+import { WikiProvider } from "./Wiki/WikiProvider";
+import { WikiList } from "./Wiki/WikiList";
+import { EditWiki } from "./Wiki/EditWiki";
+import { WikiForm } from "./Wiki/WikiForm";
+import { WikiDetail } from "./Wiki/WikiDetail";
 
 export const ApplicationViews = () => {
   return (
     <>
-      <PostProvider>
-              <Route exact path="/">
-                <PostList />
-              </Route>
+      <WikiProvider>
+        <Route exact path="/">
+          <WikiList />
+        </Route>
 
-              <Route exact path="/posts/create">
-                <PostForm />
-              </Route>
+        <Route exact path="/wiki/:stellarObjectId(\d+)">
+          <WikiDetail />
+        </Route>
 
-              <Route exact path="/posts/edit/:postId(\d+)">
-                <PostEdit />
-              </Route>
-      </PostProvider>
+        <Route exact path="/wiki/create">
+          <WikiForm />
+        </Route>
+
+        <Route exact path="/posts/edit/:postId(\d+)">
+          <EditWiki />
+        </Route>
+      </WikiProvider>
     </>
   );
 };
