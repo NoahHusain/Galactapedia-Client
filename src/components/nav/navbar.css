@@ -25,3 +25,7 @@
 .logo {
     height: 5rem
 }
+
+.alignRight{
+    text-align: end;
+}

@@ -7,6 +7,7 @@ import { WikiForm } from "./Wiki/WikiForm";
 import { WikiDetail } from "./Wiki/WikiDetail";
 import { StarProvider } from "./Stars/StarProvider";
 import { PlanetProvider } from "./Planets/PlanetProvider";
+import { NavBarProvider } from "./nav/NavBarProvider";
 
 
 export const ApplicationViews = () => {
@@ -15,6 +16,7 @@ export const ApplicationViews = () => {
       <WikiProvider>
         <StarProvider>
         <PlanetProvider>
+        <NavBarProvider>
         <Route exact path="/">
           <WikiList />
         </Route>
@@ -30,6 +32,7 @@ export const ApplicationViews = () => {
         <Route exact path="/wiki/edit/:stellarObjectId(\d+)">
           <EditWiki />
         </Route>
+        </NavBarProvider>
         </PlanetProvider>
         </StarProvider>
       </WikiProvider>
