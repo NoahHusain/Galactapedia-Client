@@ -4,6 +4,8 @@ import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { NavBarProvider } from "./nav/NavBarProvider";
+
 
 export const Galactapedia = () => (
   <>
@@ -12,8 +14,10 @@ export const Galactapedia = () => (
         if (localStorage.getItem("Galactapedia_user_token")) {
           return (
             <>
+            <NavBarProvider>
               <NavBar />
               <ApplicationViews />
+              </NavBarProvider>
             </>
           );
         } else {
