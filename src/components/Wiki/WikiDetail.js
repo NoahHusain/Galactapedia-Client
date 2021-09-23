@@ -66,6 +66,21 @@ export const WikiDetail = () => {
     }
   };
 
+  const dwarfPlanetChecker = () => {
+    const test = stellarObject.is_dwarf
+    
+    if (test === true) {
+      return <div className="blueText">Dwarf Planet: True</div>
+    }
+    else if (test === false) {
+      return <div className="blueText">Dwarf Planet: False</div>
+    }
+    else {
+      return null
+    }
+  }
+
+  console.log(stellarObject?.is_dwarf)
   return (
     <section className="post center scaleWidth">
       <h1 className="mintText">{stellarObject.stellar_object?.name}</h1>
@@ -87,9 +102,7 @@ export const WikiDetail = () => {
           Parent Planet: {stellarObject.planet.stellar_object?.name}
         </div>
       ) : null}
-      {stellarObject?.is_dwarf ? (
-        <div className="blueText">Dwarf Planet?: {stellarObject?.is_dwarf}</div>
-      ) : null}
+      {dwarfPlanetChecker()}
       {stellarObject.gravity ? (
         <div className="blueText">
           Gravity: {stellarObject.gravity} M/s<sup>2</sup>
