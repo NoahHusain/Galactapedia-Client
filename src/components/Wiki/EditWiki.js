@@ -15,7 +15,22 @@ export const EditWiki = () => {
 
 
   const { stellarObjectId } = useParams();
+	const [currentPicture, setCurrentPicture] = useState({});
 
+  const getBase64 = (file, callback) => {
+		const reader = new FileReader();
+		reader.addEventListener("load", () => callback(reader.result));
+		reader.readAsDataURL(file);
+	};
+
+  const createPostImageString = (event) => {
+		getBase64(event.target.files[0], (base64ImageString) => {
+			// console.log("Base64 of file is", base64ImageString);
+
+			// Update a component state variable to the value of base64ImageString
+			setCurrentPicture(base64ImageString);
+		});
+	};
 
   const checkForm = () => {
     if (
@@ -42,6 +57,7 @@ export const EditWiki = () => {
         radius: wiki.stellar_object.radius,
         discovered_on: wiki.stellar_object.discovered_on,
         discovered_by: wiki.stellar_object.discovered_by,
+        image: wiki.stellar_object.image,
         }
         setWiki(response_object)
     });
@@ -67,7 +83,8 @@ export const EditWiki = () => {
         mass: wiki.mass,
         radius: parseInt(wiki.radius),
         discovered_on: wiki.discovered_on,
-        discovered_by: wiki.discovered_by
+        discovered_by: wiki.discovered_by,
+        image: currentPicture
       }).then(() => history.push(`/wiki/${stellarObjectId}`));
     } else {
       window.alert("Please fill in all form fields before submitting.");
@@ -157,6 +174,18 @@ export const EditWiki = () => {
             />
           </div>
         </fieldset>
+
+        <fieldset className="editWikiField">
+          <div className="center posts blueText">
+            <label className="image_left"htmlFor="image">Image:</label>
+						<input
+							type="file"
+							id="image_url"
+							className="postFormField"
+							onChange={createPostImageString}
+						/>
+          </div>
+				</fieldset>
 
         <fieldset className="descriptionWikiField">
           <div className="center posts blueText textArea">
