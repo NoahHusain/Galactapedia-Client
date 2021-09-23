@@ -1,46 +1,109 @@
-.posts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-  
 .post {
-    flex-basis: 28%;
+    font-size: 1.5vw;
+    flex-basis: 33%;
     margin: 1em;
     padding: 1em;
-    border: 1px solid purple;
+    border: 1px solid white;
     background-color: rgba(49, 49, 49, 0.9);
+    border-radius: 10px;
 }
 
 .blueText {
-    color: #006eff;
-    margin: .2rem;
+    color: #ffffff;
+    margin: 1rem;
+    text-align: left;
 }
 
-.goldenRodText {
-    color: #ffffff;
+.mintText {
+    color: rgb(145,243,186);
+    margin-bottom: 1rem;
 }
 
 .center {
     text-align: center;
+    vertical-align: middle
 }
 
 .create__button {
     display: block;
     text-align: center;
     margin: 1rem auto 0.5rem auto;
-    padding: 0.3rem 0.3rem;
+    padding: 0.7rem 0.7rem;
     font-size: larger;
+    border-radius: 30px;
+    background-color: rgb(145,243,186);
+    color: black;
 }
 
 .flex {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr 1fr; 
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.newWikiGrid {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
     justify-content: center;
     flex-direction: column;
 }
 
 .centerLabel{
     justify-content: center;
+}
+
+.description {
+    flex-basis: 25%;
+    display: flex;
+    text-align: left;
+}
+
+.objectTitle{
+    font-size: 32px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.scaleWidth{
+    width: 40%;
+    margin: auto;
+    height: 70%;
+}
+
+.listPosts{
+    font-size: .9vw;
+    flex-basis: 33%;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid white;
+    background-color: rgba(49, 49, 49, 0.9);
+    border-radius: 10px;
+}
+
+.wikiForm{
+    font-size: .9vw;
+    flex-basis: 33%;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid white;
+    background-color: rgba(49, 49, 49, 0.9);
+    border-radius: 10px;
+}
+
+.editWikiField{
+    height: 7vw
+}
+
+.textArea {
+    height: 5vw
+}
+
+.selectCategory{
+    height: 5vw;
+    /* width: 1vw; */
 }

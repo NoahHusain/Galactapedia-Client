@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { NavBarContext } from "./NavBarProvider";
-import "./NavBar.css"
+import "./navbar.css"
 
 
 
@@ -17,8 +17,11 @@ export const NavBar = (props) => {
         localStorage.clear("Galactapedia_user_admin")
     }
     const Search = () => {
-        searchByName(value).then(setStellarObject)
-        history.push(`/wiki/${stellarObject?.id}`)
+        searchByName(value).then( (object) => {
+            setStellarObject(object)
+            history.push(`/wiki/${object.id}`)
+            setValue('')
+        })
     }
 
     const handleControlledInputChange = (event) => {
@@ -35,9 +38,9 @@ export const NavBar = (props) => {
                 <Link onClick={logout}className="navbar__link" to="/login">Logout</Link>
         </li>
         </ul>
-        <div class="topnav alignRight">
-        <input type="text" onChange={handleControlledInputChange} placeholder="Search.."/>
-        <button onClick={Search}>Search</button>
+        <div className="searchBar">
+        <input className="searchField" type="text" value={value} onChange={handleControlledInputChange} placeholder="Search.."/>
+        <button className="searchButton" onClick={Search}>Search</button>
         </div>
         </>
     )

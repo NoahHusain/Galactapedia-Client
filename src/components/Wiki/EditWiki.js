@@ -85,9 +85,9 @@ export const EditWiki = () => {
     <>
       <h1 className="goldenRodText center">Edit Wiki</h1>
 
-      <form className="flex post">
+      <form className="flex wikiForm">
 
-        <fieldset>
+        <fieldset className="editWikiField">
           <div className="center posts  blueText">
             <label htmlFor="name">Name:</label>
             <input
@@ -101,21 +101,8 @@ export const EditWiki = () => {
           </div>
         </fieldset>
 
-        <fieldset>
-          <div className="center posts  blueText">
-            <label htmlFor="description">Description:</label>
-            <textarea
-              value={wiki.description}
-              type="description"
-              id="description"
-              name="description"
-              className="center  post blueText"
-              onChange={handleControlledInputChange}
-            />
-          </div>
-        </fieldset>
 
-        <fieldset>
+        <fieldset className="editWikiField">
           <div className="center posts  blueText">
             <label htmlFor="mass">Mass:</label>
             <input
@@ -129,7 +116,7 @@ export const EditWiki = () => {
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="editWikiField">
           <div className="center posts  blueText">
             <label htmlFor="radius">Radius(Whole Number in Miles):</label>
             <input
@@ -143,7 +130,7 @@ export const EditWiki = () => {
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="editWikiField">
           <div className="center posts  blueText">
             <label htmlFor="discovered_by">Discovered By:</label>
             <input
@@ -157,7 +144,7 @@ export const EditWiki = () => {
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="editWikiField">
           <div className="center posts  blueText">
             <label htmlFor="discovered_on">Discovered On (yyyy-mm-dd):</label>
             <input
@@ -171,6 +158,21 @@ export const EditWiki = () => {
           </div>
         </fieldset>
 
+        <fieldset className="descriptionWikiField">
+          <div className="center posts blueText textArea">
+            <label htmlFor="description">Description:</label>
+            <textarea
+              cols="40"
+              rows="5"
+              value={wiki.description}
+              type="description"
+              id="description"
+              name="description"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
         <button
           className="center post blueText"
           disabled={isLoading}

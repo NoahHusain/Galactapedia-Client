@@ -17,7 +17,7 @@ export const WikiDetail = () => {
     } else {
       return;
     }
-  }, []);
+  }, [stellarObjectId]);
 
   const handleDeletePost = (stellarObjectId) => {
     deleteStellarObject(stellarObjectId);
@@ -67,9 +67,9 @@ export const WikiDetail = () => {
   };
 
   return (
-    <section className="post center">
-      <h1 className="goldenRodText">{stellarObject.stellar_object?.name}</h1>
-      <div className="blueText">
+    <section className="post center scaleWidth">
+      <h1 className="mintText">{stellarObject.stellar_object?.name}</h1>
+      <div className="blueText description">
         {stellarObject.stellar_object?.description}
       </div>
       {stellarObject.star?.stellar_object.name ? (
