@@ -10,6 +10,23 @@ export const WikiForm = () => {
   const { star_types, getStarTypes } = useContext(StarContext);
   const { stars, getStars } = useContext(StarContext);
   const { planets, getPlanets } = useContext(PlanetContext);
+	const [currentPicture, setCurrentPicture] = useState({});
+
+  const getBase64 = (file, callback) => {
+		const reader = new FileReader();
+		reader.addEventListener("load", () => callback(reader.result));
+		reader.readAsDataURL(file);
+	};
+
+  const createPostImageString = (event) => {
+		getBase64(event.target.files[0], (base64ImageString) => {
+			// console.log("Base64 of file is", base64ImageString);
+
+			// Update a component state variable to the value of base64ImageString
+			setCurrentPicture(base64ImageString);
+		});
+	};
+
 
   const [stellarObject, setStellarObject] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -76,6 +93,7 @@ export const WikiForm = () => {
         parent_planet: stellarObject.parent_planet,
         star_type: stellarObject.star_type,
         type: category,
+        image_url: currentPicture,
       }).then(() => history.push("/"));
     } else {
       window.alert("Please fill in all form fields before submitting.");
@@ -332,6 +350,18 @@ export const WikiForm = () => {
             </fieldset>
           </>
         ) : null}
+
+          <fieldset>
+          <div className="center posts blueText">
+            <label className="image_left"htmlFor="image">Image:</label>
+						<input
+							type="file"
+							id="image_url"
+							className="postFormField"
+							onChange={createPostImageString}
+						/>
+          </div>
+				</fieldset>
 
         <fieldset>
           <div className="center posts  blueText">
