@@ -67,8 +67,8 @@ export const WikiDetail = () => {
   };
 
   return (
-    <section className="post center">
-      <h1 className="goldenRodText">{stellarObject.stellar_object?.name}</h1>
+    <section className="post center scaleWidth">
+      <h1 className="mintText">{stellarObject.stellar_object?.name}</h1>
       <div className="blueText">
         {stellarObject.stellar_object?.description}
       </div>

@@ -10,11 +10,11 @@
 
 .blueText {
     color: #ffffff;
-    margin: .2rem;
+    margin: 1rem;
 }
 
-.goldenRodText {
-    color: #ffffff;
+.mintText {
+    color: rgb(145,243,186);
 }
 
 .center {
@@ -54,4 +54,10 @@
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+.scaleWidth{
+    width: 40%;
+    margin: auto;
+    height: 70%;
 }
