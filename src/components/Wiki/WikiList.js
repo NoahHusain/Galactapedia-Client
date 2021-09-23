@@ -24,7 +24,7 @@ export const WikiList = () => {
       <div className="grid">
       {stellarObjects.map((stellarObject) => (
         <section className="posts">
-          <article className="post" id={`stellarObject--${stellarObject.id}`}>
+          <article className="listPosts" id={`stellarObject--${stellarObject.id}`}>
             <div className="blueText objectTitle">
               <Link to={"/wiki/" + stellarObject.id}>{stellarObject.name}</Link>
             </div>

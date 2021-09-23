@@ -69,7 +69,7 @@ export const WikiDetail = () => {
   return (
     <section className="post center scaleWidth">
       <h1 className="mintText">{stellarObject.stellar_object?.name}</h1>
-      <div className="blueText">
+      <div className="blueText description">
         {stellarObject.stellar_object?.description}
       </div>
       {stellarObject.star?.stellar_object.name ? (

@@ -121,7 +121,7 @@ export const Register = (props) => {
 						/>
 					</fieldset>
 				</div>
-				<button className="btn btn-1 btn-sep icon-send" type="submit">
+				<button className="registerButton btn btn-1 btn-sep icon-send" type="submit">
 					Register
 				</button>
 			</form>

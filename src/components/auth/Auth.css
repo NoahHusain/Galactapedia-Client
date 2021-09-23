@@ -9,11 +9,12 @@ fieldset {
 }
 
 .form--login--wrap {
-    display: flex;
+    display: grid;
     margin: auto;
     max-width: 900px;
     flex-wrap: wrap;
     justify-content: center;
+    justify-items: center;
 }
 
 .form--login {
@@ -135,5 +136,8 @@ fieldset {
     font-size: 48px;
     margin-top: 18rem;
     margin-bottom: 2rem;
+}
 
+.registerButton{
+    width:10rem;
 }

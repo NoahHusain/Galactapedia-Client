@@ -98,10 +98,10 @@ export const WikiForm = () => {
     <>
       <h1 className="goldenRodText center">New Wiki</h1>
 
-      <form className="flex post">
+      <form className="newWikiGrid wikiForm">
         <select
           onChange={handleCategoryChange}
-          className="flex post"
+          className="selectCategory flex post"
           name="category"
           id="category"
         >
@@ -113,7 +113,7 @@ export const WikiForm = () => {
         </select>
 
         <fieldset>
-          <div className="center posts  blueText">
+          <div className="center posts blueText">
             <label htmlFor="name">Name:</label>
             <input
               value={stellarObject.name}
@@ -126,19 +126,6 @@ export const WikiForm = () => {
           </div>
         </fieldset>
 
-        <fieldset>
-          <div className="center posts  blueText">
-            <label htmlFor="description">Description:</label>
-            <textarea
-              value={stellarObject.description}
-              type="description"
-              id="description"
-              name="description"
-              className="center  post blueText"
-              onChange={handleControlledInputChange}
-            />
-          </div>
-        </fieldset>
 
         <fieldset>
           <div className="center posts  blueText">
@@ -346,6 +333,19 @@ export const WikiForm = () => {
           </>
         ) : null}
 
+        <fieldset>
+          <div className="center posts  blueText">
+            <label htmlFor="description">Description:</label>
+            <textarea
+              value={stellarObject.description}
+              type="description"
+              id="description"
+              name="description"
+              className="center  post blueText"
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
 
         <button
           className="center post blueText"
