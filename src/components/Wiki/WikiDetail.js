@@ -17,7 +17,7 @@ export const WikiDetail = () => {
     } else {
       return;
     }
-  }, []);
+  }, [stellarObjectId]);
 
   const handleDeletePost = (stellarObjectId) => {
     deleteStellarObject(stellarObjectId);

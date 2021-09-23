@@ -6,10 +6,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./images/Space.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background: url(./images/Space4.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   font-family: 'Quantico', Helvetica
 }
 
@@ -19,13 +20,16 @@ code {
 }
 
 a:visited {
-  color: aqua;
+  color: rgb(145,243,186);
+  text-decoration: none;
 }
 
 a:link {
-  color: aqua;
+  color: rgb(145,243,186);
+  text-decoration: none;
+
 }
 
 a:hover {
-  color: goldenrod;
+  color: aqua;
 }
